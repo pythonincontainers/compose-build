@@ -1,0 +1,7 @@
+ARG BaseImage=python
+ARG ImageTag=3.7.3
+FROM $BaseImage:$ImageTag
+ENV PYTHONUNBUFFERED 1
+ARG DjangoVersion=2.2.1
+ARG uWSGIVersion=2.0.18
+RUN pip install Django==$DjangoVersion uwsgi==$uWSGIVersion

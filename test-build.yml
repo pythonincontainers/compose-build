@@ -1,0 +1,41 @@
+version: "3.7"
+
+services:
+  full:
+    image: pythonincontainers/flask-hello:3.7.3
+    ports:
+      - 5001:5000
+    build:
+      context: ./simple-flask
+      dockerfile: Dockerfile-universal
+      args:
+        - ImageTag=3.7.3
+      labels:
+        com.pythoninconrainers.app: simple-flask
+        com.pythoninconrainers.image.base: full
+
+  slim:
+    image: pythonincontainers/flask-hello:3.7.3-slim
+    ports:
+      - 5002:5000
+    build:
+      context: ./simple-flask
+      dockerfile: Dockerfile-universal
+      args:
+        - ImageTag=3.7.3-slim
+      labels:
+        com.pythoninconrainers.app: simple-flask
+        com.pythoninconrainers.image.base: slim
+
+  alpine:
+    image: pythonincontainers/flask-hello:3.7.3-alpine
+    ports:
+      - 5003:5000
+    build:
+      context: ./simple-flask
+      dockerfile: Dockerfile-universal
+      args:
+        - ImageTag=3.7.3-alpine
+      labels:
+        com.pythoninconrainers.app: simple-flask
+        com.pythoninconrainers.image.base: alpine

@@ -1,0 +1,8 @@
+ARG BaseImage=python
+ARG ImageTag=3.7.3
+FROM $BaseImage:$ImageTag
+WORKDIR /myproject
+COPY . .
+RUN pip install -r requirements.txt
+EXPOSE 5000
+CMD python hello-flask.py

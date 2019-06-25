@@ -1,0 +1,72 @@
+[
+{
+    "model": "polls.question",
+    "pk": 1,
+    "fields": {
+        "question_text": "How are you?",
+        "pub_date": "2019-06-01T17:00:27Z"
+    }
+},
+{
+    "model": "polls.question",
+    "pk": 2,
+    "fields": {
+        "question_text": "Where are you?",
+        "pub_date": "2019-06-01T17:00:39Z"
+    }
+},
+{
+    "model": "polls.choice",
+    "pk": 1,
+    "fields": {
+        "question": 1,
+        "choice_text": "Good",
+        "votes": 1
+    }
+},
+{
+    "model": "polls.choice",
+    "pk": 2,
+    "fields": {
+        "question": 1,
+        "choice_text": "So so",
+        "votes": 0
+    }
+},
+{
+    "model": "polls.choice",
+    "pk": 3,
+    "fields": {
+        "question": 1,
+        "choice_text": "Bad",
+        "votes": 0
+    }
+},
+{
+    "model": "polls.choice",
+    "pk": 4,
+    "fields": {
+        "question": 2,
+        "choice_text": "Americas",
+        "votes": 0
+    }
+},
+{
+    "model": "polls.choice",
+    "pk": 5,
+    "fields": {
+        "question": 2,
+        "choice_text": "Europe",
+        "votes": 1
+    }
+},
+{
+    "model": "polls.choice",
+    "pk": 6,
+    "fields": {
+        "question": 2,
+        "choice_text": "Asia",
+        "votes": 0
+    }
+}
+]

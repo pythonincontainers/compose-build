@@ -1,0 +1,42 @@
+version: "3.7"
+services:
+
+# fake Service to build "django" Base Image
+  django:
+    build:
+      context: base_image/
+      dockerfile: Dockerfile.mydjango
+    image: pythonincontainers/django:latest
+    entrypoint: /bin/true
+
+#fake Service to build "uwsgi" Base Image
+  uwsgi:
+    build:
+      context: base_image/
+      dockerfile: Dockerfile.myuwsgi
+    image: pythonincontainers/uwsgi:latest
+    entrypoint: /bin/true
+
+# fake Service to build "mynginx" Image
+  mynginx:
+    depends_on:
+      - django
+    build:
+      context: django-polls/
+      dockerfile: Dockerfile.nginx
+      args:
+        BaseImage: pythonincontainers/django:latest
+    image: pythonincontainers/mynginx:latest
+    entrypoint: /bin/true
+
+# fake Service to build "django-polls" Image
+  django-polls:
+    depends_on:
+      - uwsgi
+    build:
+      context: django-polls/
+      dockerfile: Dockerfile.polls
+      args:
+        BaseImage: pythonincontainers/uwsgi:latest
+    image: pythonincontainers/django-polls:nginx
+    entrypoint: /bin/true

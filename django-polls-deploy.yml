@@ -1,0 +1,32 @@
+version: "3.7"
+
+services:
+
+  db:
+    image: postgres:11.3
+    networks:
+      - polls_net
+    volumes:
+      - polls_vol:/var/lib/postgres/data
+    env_file:
+      - deployment.env
+
+  app1:
+    image: pythonincontainers/django-polls:nginx
+    networks:
+      - polls_net
+    env_file:
+      - deployment.env
+
+  proxy:
+    image: pythonincontainers/mynginx:latest
+    networks:
+      - polls_net
+    ports:
+      - "8000:8000"
+
+networks:
+  polls_net:
+
+volumes:
+  polls_vol:
